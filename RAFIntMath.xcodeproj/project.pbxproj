@@ -9,7 +9,14 @@
 /* Begin PBXBuildFile section */
 		5D5169A41956B78300B2A1B7 /* RAFIntMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D5169A31956B78300B2A1B7 /* RAFIntMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D5169AA1956B78400B2A1B7 /* RAFIntMath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D51699E1956B78300B2A1B7 /* RAFIntMath.framework */; };
-		5D5169B11956B78400B2A1B7 /* RAFIntMathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5169B01956B78400B2A1B7 /* RAFIntMathTests.swift */; };
+		5D5169BE1956B79D00B2A1B7 /* Binomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5169BA1956B79D00B2A1B7 /* Binomial.swift */; };
+		5D5169BF1956B79D00B2A1B7 /* Factorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5169BB1956B79D00B2A1B7 /* Factorial.swift */; };
+		5D5169C01956B79D00B2A1B7 /* Factors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5169BC1956B79D00B2A1B7 /* Factors.swift */; };
+		5D5169C11956B79D00B2A1B7 /* Rational.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5169BD1956B79D00B2A1B7 /* Rational.swift */; };
+		5D5169C61956B7C100B2A1B7 /* BinomialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5169C21956B7C100B2A1B7 /* BinomialTests.swift */; };
+		5D5169C71956B7C100B2A1B7 /* FactorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5169C31956B7C100B2A1B7 /* FactorsTests.swift */; };
+		5D5169C81956B7C100B2A1B7 /* FactorialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5169C41956B7C100B2A1B7 /* FactorialTests.swift */; };
+		5D5169C91956B7C100B2A1B7 /* RationalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5169C51956B7C100B2A1B7 /* RationalTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +35,14 @@
 		5D5169A31956B78300B2A1B7 /* RAFIntMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RAFIntMath.h; sourceTree = "<group>"; };
 		5D5169A91956B78400B2A1B7 /* RAFIntMathTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RAFIntMathTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D5169AF1956B78400B2A1B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D5169B01956B78400B2A1B7 /* RAFIntMathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAFIntMathTests.swift; sourceTree = "<group>"; };
+		5D5169BA1956B79D00B2A1B7 /* Binomial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Binomial.swift; sourceTree = "<group>"; };
+		5D5169BB1956B79D00B2A1B7 /* Factorial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factorial.swift; sourceTree = "<group>"; };
+		5D5169BC1956B79D00B2A1B7 /* Factors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factors.swift; sourceTree = "<group>"; };
+		5D5169BD1956B79D00B2A1B7 /* Rational.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rational.swift; sourceTree = "<group>"; };
+		5D5169C21956B7C100B2A1B7 /* BinomialTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinomialTests.swift; sourceTree = "<group>"; };
+		5D5169C31956B7C100B2A1B7 /* FactorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactorsTests.swift; sourceTree = "<group>"; };
+		5D5169C41956B7C100B2A1B7 /* FactorialTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactorialTests.swift; sourceTree = "<group>"; };
+		5D5169C51956B7C100B2A1B7 /* RationalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RationalTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +86,10 @@
 			isa = PBXGroup;
 			children = (
 				5D5169A31956B78300B2A1B7 /* RAFIntMath.h */,
+				5D5169BA1956B79D00B2A1B7 /* Binomial.swift */,
+				5D5169BB1956B79D00B2A1B7 /* Factorial.swift */,
+				5D5169BC1956B79D00B2A1B7 /* Factors.swift */,
+				5D5169BD1956B79D00B2A1B7 /* Rational.swift */,
 				5D5169A11956B78300B2A1B7 /* Supporting Files */,
 			);
 			path = RAFIntMath;
@@ -88,7 +106,10 @@
 		5D5169AD1956B78400B2A1B7 /* RAFIntMathTests */ = {
 			isa = PBXGroup;
 			children = (
-				5D5169B01956B78400B2A1B7 /* RAFIntMathTests.swift */,
+				5D5169C21956B7C100B2A1B7 /* BinomialTests.swift */,
+				5D5169C31956B7C100B2A1B7 /* FactorsTests.swift */,
+				5D5169C41956B7C100B2A1B7 /* FactorialTests.swift */,
+				5D5169C51956B7C100B2A1B7 /* RationalTests.swift */,
 				5D5169AE1956B78400B2A1B7 /* Supporting Files */,
 			);
 			path = RAFIntMathTests;
@@ -210,6 +231,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D5169BE1956B79D00B2A1B7 /* Binomial.swift in Sources */,
+				5D5169BF1956B79D00B2A1B7 /* Factorial.swift in Sources */,
+				5D5169C01956B79D00B2A1B7 /* Factors.swift in Sources */,
+				5D5169C11956B79D00B2A1B7 /* Rational.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +242,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D5169B11956B78400B2A1B7 /* RAFIntMathTests.swift in Sources */,
+				5D5169C61956B7C100B2A1B7 /* BinomialTests.swift in Sources */,
+				5D5169C71956B7C100B2A1B7 /* FactorsTests.swift in Sources */,
+				5D5169C91956B7C100B2A1B7 /* RationalTests.swift in Sources */,
+				5D5169C81956B7C100B2A1B7 /* FactorialTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +348,7 @@
 		5D5169B51956B78400B2A1B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -329,12 +358,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		5D5169B61956B78400B2A1B7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

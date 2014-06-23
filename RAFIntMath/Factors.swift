@@ -36,11 +36,14 @@ struct Factors : Printable, Sequence
     {
         var desc = ""
         var addComma = false
-        for (factor,count) in _factors {
+        let sortedFactors = sort(Array(_factors.keys))
+            
+        for factor in sortedFactors {
+            let power = _factors[factor]
             if (addComma) {
-                desc += ", "
+                desc += " * "
             }
-            desc += "\(factor)x\(count)"
+            desc += power != 1 ? "\(factor)^\(power)" : "\(factor)"
             addComma = true
         }
         return desc

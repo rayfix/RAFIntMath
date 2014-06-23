@@ -134,4 +134,11 @@ class FactorsTests: XCTestCase {
         produced.sort { $0 < $1 }
         XCTAssertTrue(expected == produced)
     }
+    
+    func testPrinting()
+    {
+        let factors = Factors(2*2*2*3*7*43, convertToPrime:true)
+        let produced = "\(factors)"
+        XCTAssertEqual("2^3 * 3 * 7 * 43", produced)
+    }
 }

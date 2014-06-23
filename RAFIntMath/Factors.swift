@@ -11,11 +11,17 @@ struct Factors : Printable
 {
     var _factors:Dictionary<Int,Int> = [:]
     
-    init(_ f:Int, convertToPrime:Bool = false)
+    init(_ input:Int, convertToPrime:Bool = false)
     {
-        _factors[f] = 1
         if (convertToPrime) {
-            makePrime()
+            let primes = Factors.primes(input)
+            for p in primes {
+                let count = _factors[p] ?  _factors[p]! : 0
+                _factors[p] = count + 1
+            }
+        }
+        else {
+            _factors[input] = 1
         }
     }
     
@@ -56,7 +62,7 @@ struct Factors : Printable
         return _factors.count
     }
     
-    func _primeFactors(input:Int) -> Array<Int>
+    static func primes(input:Int) -> Array<Int>
     {
         var n = input
         var answer:Array<Int> = []
@@ -77,19 +83,25 @@ struct Factors : Printable
         return answer
     }
     
+    mutating func add(factor:Int, count:Int = 1)
+    {
+        if let current = _factors[factor] {
+            self._factors[factor] = current + count
+        }
+        else {
+            self._factors[factor] = count
+        }
+    }
+    
     func primeFactors() -> Dictionary<Int,Int>
     {
         var primeFactors:Dictionary<Int,Int> = [:]
         
-        for (k,v) in _factors {
-            let primes = _primeFactors(k)
+        for (factor,count) in _factors {
+            let primes = Factors.primes(factor)
             for p in primes {
-                if let current = primeFactors[p] {
-                    primeFactors[p] = current + v
-                }
-                else {
-                    primeFactors[p] = v
-                }
+                let current = primeFactors[p] ? primeFactors[p]! : 0
+                primeFactors[p] = current + count
             }
         }
         return primeFactors

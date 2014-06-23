@@ -91,7 +91,6 @@ class FactorsTests: XCTestCase {
         var f2 = Factors(200)
         cancel(&f1, &f2)
         XCTAssertEqual(Rational(1,2), Rational(Int(f1),Int(f2)))
-        
     }
     
     func testConvertToInt()
@@ -109,6 +108,13 @@ class FactorsTests: XCTestCase {
         let f1024 = Factors(1024, convertToPrime:true)
         XCTAssertEqual(Double(f100), 100.0)
         XCTAssertEqual(Double(f1024), 1024.0)
-        XCTAssertEqual(Double(f100*f1024), 10_2400.0)
+        XCTAssertEqual(Double(f100*f1024), 102_400.0)
+    }
+
+    func testPrimeFactors()
+    {
+        let expected = [2,3,3,5,7,11,13]
+        let factors = Factors.primes(2*3*3*5*7*11*13)
+        XCTAssertTrue(factors == expected)
     }
 }

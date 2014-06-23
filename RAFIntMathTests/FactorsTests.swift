@@ -77,6 +77,14 @@ class FactorsTests: XCTestCase {
         XCTAssertEqual(Int(f), 20_000)
     }
     
+    func testFactorsMultiply3()
+    {
+        let f1 = Factors(100)
+        let f2 = Factors(1024, convertToPrime:true)
+        let f = f1 * f2
+        XCTAssertEqual(Int(f), 102_400)
+    }
+    
     func testFactorsCancel()
     {
         var f1 = Factors(100, convertToPrime:true)
@@ -84,5 +92,23 @@ class FactorsTests: XCTestCase {
         cancel(&f1, &f2)
         XCTAssertEqual(Rational(1,2), Rational(Int(f1),Int(f2)))
         
+    }
+    
+    func testConvertToInt()
+    {
+        let f100 = Factors(100)
+        let f1024 = Factors(1024, convertToPrime:true)
+        XCTAssertEqual(Int(f100), 100)
+        XCTAssertEqual(Int(f1024), 1024)
+        XCTAssertEqual(Int(f100*f1024), 102_400)
+    }
+    
+    func testConvertToDouble()
+    {
+        let f100 = Factors(100)
+        let f1024 = Factors(1024, convertToPrime:true)
+        XCTAssertEqual(Double(f100), 100.0)
+        XCTAssertEqual(Double(f1024), 1024.0)
+        XCTAssertEqual(Double(f100*f1024), 10_2400.0)
     }
 }

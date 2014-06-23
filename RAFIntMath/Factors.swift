@@ -138,7 +138,7 @@ func *(lhs:Factors, rhs:Factors) -> Factors
             most._factors[factor] = currentCount + count
         }
         else {
-            most._factors[factor] = 1
+            most._factors[factor] = count
         }
     }
     return most
@@ -146,24 +146,24 @@ func *(lhs:Factors, rhs:Factors) -> Factors
 
 extension Int {
     init(_ v:Factors) {
-        var accum = 1
-        for (factor, count) in v._factors
+        var answer = 1
+        for (base, power) in v._factors
         {
-            for i in 0..count {
-                accum *= factor
+            for _ in 0..power {
+                answer *= base
             }
         }
-        self = accum
+        self = answer
     }
 }
 
 extension Double {
     init(_ v: Factors) {
-        var accum:Double = 1
-        for (factor, count) in v._factors
+        var answer:Double = 1
+        for (base, power) in v._factors
         {
-            accum *= pow(Double(factor), Double(count))
+            answer *= pow(Double(base), Double(power))
         }
-        self = accum
+        self = answer
     }
 }

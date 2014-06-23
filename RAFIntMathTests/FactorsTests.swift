@@ -89,7 +89,7 @@ class FactorsTests: XCTestCase {
     {
         var f1 = Factors(100, convertToPrime:true)
         var f2 = Factors(200)
-        cancel(&f1, &f2)
+        reduce(&f1, &f2)
         XCTAssertEqual(Rational(1,2), Rational(Int(f1),Int(f2)))
     }
     

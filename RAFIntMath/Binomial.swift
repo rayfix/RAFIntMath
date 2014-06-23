@@ -15,7 +15,7 @@ struct Binomial {
     func _toDouble() -> Double {
         var num = Factorial(n).factors
         var den = Factorial(choose).factors * Factorial(n-choose).factors
-        cancel(&num, &den)
+        reduce(&num, &den)
         return Double(num) / Double(den)
     }
 }
@@ -29,6 +29,6 @@ extension Double {
 func /(num:Binomial, den:Binomial) -> Rational {
     var n = Factorial(num.n).factors * Factorial(den.choose).factors * Factorial(den.n - den.choose).factors
     var d = Factorial(den.n).factors * Factorial(num.choose).factors * Factorial(num.n - num.choose).factors
-    cancel(&n, &d)
+    reduce(&n, &d)
     return Rational(Int(n),Int(d))
 }

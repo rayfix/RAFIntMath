@@ -113,7 +113,7 @@ struct Factors : Printable, Sequence
     }
 }
 
-func cancel(inout f1:Factors, inout f2:Factors)
+func reduce(inout f1:Factors, inout f2:Factors)
 {
     var swapped = false
     if (f1.count > f2.count) {

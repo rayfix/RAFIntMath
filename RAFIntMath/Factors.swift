@@ -7,17 +7,15 @@
 
 import Foundation
 
-struct Factors : Printable
+struct Factors : Printable, Sequence
 {
     var _factors:Dictionary<Int,Int> = [:]
     
     init(_ input:Int, convertToPrime:Bool = false)
     {
         if (convertToPrime) {
-            let primes = Factors.primes(input)
-            for p in primes {
-                let count = _factors[p] ?  _factors[p]! : 0
-                _factors[p] = count + 1
+            for p in Factors.primes(input) {
+                add(p)
             }
         }
         else {
@@ -46,6 +44,10 @@ struct Factors : Printable
             addComma = true
         }
         return desc
+    }
+    
+    func generate() -> FactorGenerator {
+        return FactorGenerator(factorsDictionary: _factors)
     }
     
     subscript(index:Int) -> Int? {
@@ -85,12 +87,7 @@ struct Factors : Printable
     
     mutating func add(factor:Int, count:Int = 1)
     {
-        if let current = _factors[factor] {
-            self._factors[factor] = current + count
-        }
-        else {
-            self._factors[factor] = count
-        }
+        self._factors[factor] = self._factors[factor] ? self._factors[factor]! + count : count
     }
     
     func primeFactors() -> Dictionary<Int,Int>
@@ -178,4 +175,19 @@ extension Double {
         }
         self = answer
     }
+}
+
+struct FactorGenerator : Generator
+{
+    init (factorsDictionary:Dictionary<Int,Int>)
+    {
+        generator = factorsDictionary.generate()
+    }
+    
+    mutating func next() -> (Int,Int)?
+    {
+        return generator.next()
+    }
+    
+    var generator:Dictionary<Int,Int>.GeneratorType
 }

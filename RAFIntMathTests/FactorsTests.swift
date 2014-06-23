@@ -117,4 +117,21 @@ class FactorsTests: XCTestCase {
         let factors = Factors.primes(2*3*3*5*7*11*13)
         XCTAssertTrue(factors == expected)
     }
+    
+    func testIteration()
+    {
+        let factors = Factors(2*2*2*3*7*43, convertToPrime:true)
+        let expected = [2,2,2,3,7,43]
+        
+        var produced:Array<Int> = []
+        
+        for (base, power) in factors {
+            for _ in 0..power {
+                produced.append(base)
+            }
+        }
+
+        produced.sort { $0 < $1 }
+        XCTAssertTrue(expected == produced)
+    }
 }

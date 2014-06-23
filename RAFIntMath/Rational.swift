@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Rational : Printable, Hashable
+struct Rational : Printable, Comparable, Hashable
 {
     let numerator:Int
     let denominator:Int
@@ -102,19 +102,9 @@ func ==(a: Rational, b: Rational) -> Bool
         lhs.denominator == rhs.denominator
 }
 
-func <=(lhs: Rational, rhs: Rational) -> Bool
+func <(lhs: Rational, rhs: Rational) -> Bool
 {
-    return Double(lhs) <= Double(rhs)
-}
-
-func >=(lhs: Rational, rhs: Rational) -> Bool
-{
-    return Double(lhs) >= Double(rhs)
-}
-
-func >(lhs: Rational, rhs: Rational) -> Bool
-{
-    return Double(lhs) > Double(rhs)
+    return Double(lhs) < Double(rhs)
 }
 
 func +(lhs:Rational, rhs:Rational) -> Rational

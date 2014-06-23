@@ -80,4 +80,20 @@ class RationalTests: XCTestCase {
         let r = Rational(10,20) + Rational(2,3) + Rational(1,3) + Rational(1,2)
         XCTAssertEqual(Rational(2), r)
     }
+    
+    func testComparable()
+    {
+        XCTAssertTrue(Rational(1,3) < Rational(1,2))
+    }
+    
+    func testSort()
+    {
+        let input = [Rational(1,2), Rational(3,2), Rational(-6,2),Rational(-1,2),Rational(78,160)]
+        let sorted = sort(input) { $0 < $1 }
+        let expected = [Rational(-6,2),Rational(-1,2),Rational(78,160),Rational(1,2),Rational(3,2)]
+        for (index, value) in enumerate(sorted) {
+            XCTAssertEqual(value, expected[index])
+        }
+
+    }
 }

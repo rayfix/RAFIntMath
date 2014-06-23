@@ -94,6 +94,17 @@ class RationalTests: XCTestCase {
         for (index, value) in enumerate(sorted) {
             XCTAssertEqual(value, expected[index])
         }
-
+    }
+    
+    func testLimit()
+    {
+        var limit = Rational(0,1)
+        var delta = Rational(1,1)
+        
+        for i in 0..16 {
+            limit = limit + delta
+            delta = delta / Rational(2)
+        }
+        XCTAssertEqualWithAccuracy(2, Double(limit), 1e-4)
     }
 }

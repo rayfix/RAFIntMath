@@ -111,7 +111,7 @@ func +(lhs:Rational, rhs:Rational) -> Rational
 {
     return Rational(lhs.numerator * rhs.denominator   +
         rhs.numerator * lhs.denominator,
-        lhs.denominator * rhs.denominator)
+        lhs.denominator * rhs.denominator).reduced()
 }
 
 func -(lhs:Rational, rhs:Rational) -> Rational

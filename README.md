@@ -7,6 +7,9 @@ of getting the ace of diamonds in your poker hand.  It turns out that
 it is 5/52.
 
 ```swift
+    import XCTest
+    import RAFIntMath
+
     func testPokerAceOfDiamonds()
     {
         let handsWithAceOfDiamonds = Binomial(n: 51, choose: 4)

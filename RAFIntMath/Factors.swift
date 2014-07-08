@@ -68,10 +68,10 @@ struct Factors : Printable, Sequence
         return _factors.count
     }
     
-    static func primes(input:Int) -> Array<Int>
+    static func primes(input:Int) -> [Int]
     {
         var n = input
-        var answer:Array<Int> = []
+        var answer:[Int] = []
         var z = 2
         
         while z * z <= n {

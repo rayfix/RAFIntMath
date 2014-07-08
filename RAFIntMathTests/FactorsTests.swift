@@ -123,7 +123,7 @@ class FactorsTests: XCTestCase {
         let factors = Factors(2*2*2*3*7*43, convertToPrime:true)
         let expected = [2,2,2,3,7,43]
         
-        var produced:Array<Int> = []
+        var produced:[Int] = []
         
         for (base, power) in factors {
             for _ in 0..<power {

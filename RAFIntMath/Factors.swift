@@ -9,7 +9,7 @@ import Foundation
 
 struct Factors : Printable, Sequence
 {
-    var _factors:Dictionary<Int,Int> = [:]
+    var _factors:[Int:Int] = [:]
     
     init(_ input:Int, convertToPrime:Bool = false)
     {
@@ -94,9 +94,9 @@ struct Factors : Printable, Sequence
         self._factors[factor] = self._factors[factor] ? self._factors[factor]! + count : count
     }
     
-    func primeFactors() -> Dictionary<Int,Int>
+    func primeFactors() -> [Int:Int]
     {
-        var primeFactors:Dictionary<Int,Int> = [:]
+        var primeFactors:[Int:Int] = [:]
         
         for (factor,count) in _factors {
             let primes = Factors.primes(factor)
@@ -183,7 +183,7 @@ extension Double {
 
 struct FactorGenerator : Generator
 {
-    init (factorsDictionary:Dictionary<Int,Int>)
+    init (factorsDictionary:[Int:Int])
     {
         generator = factorsDictionary.generate()
     }

@@ -24,4 +24,3 @@ it is 5/52.
         XCTAssertEqual(probabilityOfNoAceOfDiamonds, Rational(47,52))
     }
 ```
-

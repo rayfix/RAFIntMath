@@ -126,7 +126,7 @@ class FactorsTests: XCTestCase {
         var produced:Array<Int> = []
         
         for (base, power) in factors {
-            for _ in 0..power {
+            for _ in 0..<power {
                 produced.append(base)
             }
         }

@@ -89,9 +89,9 @@ class RationalTests: XCTestCase {
     func testSort()
     {
         let input = [Rational(1,2), Rational(3,2), Rational(-6,2),Rational(-1,2),Rational(78,160)]
-        let sorted = sort(input) { $0 < $1 }
+        let sortedInput = sorted(input) { $0 < $1 }
         let expected = [Rational(-6,2),Rational(-1,2),Rational(78,160),Rational(1,2),Rational(3,2)]
-        for (index, value) in enumerate(sorted) {
+        for (index, value) in enumerate(sortedInput) {
             XCTAssertEqual(value, expected[index])
         }
     }
@@ -101,7 +101,7 @@ class RationalTests: XCTestCase {
         var limit = Rational(0,1)
         var delta = Rational(1,1)
         
-        for i in 0..16 {
+        for i in 0..<16 {
             limit = limit + delta
             delta = delta / Rational(2)
         }

@@ -36,7 +36,8 @@ struct Factors : Printable, Sequence
     {
         var desc = ""
         var addComma = false
-        let sortedFactors = sort(Array(_factors.keys))
+        let arr = Array(_factors.keys)
+        let sortedFactors = sorted(arr,<)
             
         for factor in sortedFactors {
             let power = _factors[factor]
@@ -161,7 +162,7 @@ extension Int {
         var answer = 1
         for (base, power) in v._factors
         {
-            for _ in 0..power {
+            for _ in 0..<power {
                 answer *= base
             }
         }

@@ -41,9 +41,9 @@ class BinomialTests: XCTestCase {
     func testPrintRational()
     {
         let foo = Rational(10,12)
-        XCTAssertEqualObjects("\(foo)", "10/12")
+        XCTAssertEqual("\(foo)", "10/12")
         let bar = Rational(42)
-        XCTAssertEqualObjects("\(bar)", "42")
+        XCTAssertEqual("\(bar)", "42")
     }
     
     func testPokerAce() {

@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Binomial {
-    var n:Int
-    var choose:Int
+public struct Binomial {
+    public var n:Int
+    public var choose:Int
     
     // private
     func _toDouble() -> Double {
@@ -18,15 +18,21 @@ struct Binomial {
         reduce(&num, &den)
         return Double(num) / Double(den)
     }
+    
+    public init(n:Int, choose:Int) {
+        self.n = n
+        self.choose = choose
+    }
+    
 }
 
-extension Double {
-    init(_ v: Binomial) {
+public extension Double {
+    public init(_ v: Binomial) {
         self = v._toDouble()
     }
 }
 
-func /(num:Binomial, den:Binomial) -> Rational {
+public func /(num:Binomial, den:Binomial) -> Rational {
     var n = Factorial(num.n).factors * Factorial(den.choose).factors * Factorial(den.n - den.choose).factors
     var d = Factorial(den.n).factors * Factorial(num.choose).factors * Factorial(num.n - num.choose).factors
     reduce(&n, &d)

@@ -7,48 +7,48 @@
 
 import Foundation
 
-struct Rational : Printable, Comparable, Hashable
+public struct Rational : Printable, Comparable, Hashable
 {
-    let numerator:Int
-    let denominator:Int
+    public let numerator:Int
+    public let denominator:Int
     
-    init(_ v:Int)
+    public init(_ v:Int)
     {
         self.init(v,1)
     }
     
-    init(_ n:Int, _ d:Int)
+    public init(_ n:Int, _ d:Int)
     {
         self.numerator = n
         self.denominator = d
     }
     
-    var isZero : Bool
+    public var isZero : Bool
     {
         return !isNaN && numerator == 0
     }
     
-    var isNaN : Bool
+    public var isNaN : Bool
     {
         return denominator == 0
     }
     
-    var reciprocal: Rational
+    public var reciprocal: Rational
     {
         return Rational(denominator, numerator)
     }
     
-    var wholePart:Int
+    public var wholePart:Int
     {
         return numerator / denominator
     }
     
-    var remainder:Int
+    public var remainder:Int
     {
         return numerator % denominator
     }
     
-    var description:String
+    public var description:String
     {
         if (isNaN) {
             return "NaN"
@@ -72,7 +72,7 @@ struct Rational : Printable, Comparable, Hashable
         return a
     }
     
-    func reduced() -> Rational
+    public func reduced() -> Rational
     {
         if (isZero) {
             return Rational(0,1)
@@ -87,13 +87,13 @@ struct Rational : Printable, Comparable, Hashable
         return self
     }
     
-    var hashValue: Int
+    public var hashValue: Int
     {
         return Double(self).hashValue
     }
 }
 
-func ==(a: Rational, b: Rational) -> Bool
+public func ==(a: Rational, b: Rational) -> Bool
 {
     let lhs = a.reduced()
     let rhs = b.reduced()
@@ -102,38 +102,38 @@ func ==(a: Rational, b: Rational) -> Bool
         lhs.denominator == rhs.denominator
 }
 
-func <(lhs: Rational, rhs: Rational) -> Bool
+public func <(lhs: Rational, rhs: Rational) -> Bool
 {
     return Double(lhs) < Double(rhs)
 }
 
-func +(lhs:Rational, rhs:Rational) -> Rational
+public func +(lhs:Rational, rhs:Rational) -> Rational
 {
     return Rational(lhs.numerator * rhs.denominator   +
         rhs.numerator * lhs.denominator,
         lhs.denominator * rhs.denominator).reduced()
 }
 
-func -(lhs:Rational, rhs:Rational) -> Rational
+public func -(lhs:Rational, rhs:Rational) -> Rational
 {
     return lhs + (-rhs)
 }
 
-@prefix func -(a: Rational) -> Rational {
+public prefix func -(a: Rational) -> Rational {
     return Rational(-a.numerator, a.denominator)
 }
 
-func *(a: Rational, b: Rational) -> Rational
+public func *(a: Rational, b: Rational) -> Rational
 {
     return Rational(a.numerator*b.numerator,a.denominator*b.denominator)
 }
 
-func /(a: Rational, b: Rational) -> Rational
+public func /(a: Rational, b: Rational) -> Rational
 {
     return a * b.reciprocal;
 }
 
-extension Double {
+public extension Double {
     init(_ v:Rational)
     {
         self = Double(v.numerator) / Double(v.denominator)

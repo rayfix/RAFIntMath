@@ -8,23 +8,23 @@
 
 import Foundation
 
-struct Factorial {
+public struct Factorial {
     
-    let n:Int
+    public let n:Int
     
-    init(_ n:Int)
+    public init(_ n:Int)
     {
         self.n = n
     }
     
-    var factors:Factors
+    public var factors:Factors
     {
-        return Factors(1...n)
+        return n == 0 ? Factors(1) : Factors(1...n)
     }
 }
 
-extension Double {
-    init(_ v: Factorial) {
+public extension Double {
+    public init(_ v: Factorial) {
         self = Double(v.factors)
     }
 }

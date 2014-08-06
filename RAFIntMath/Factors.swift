@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct Factors : Printable, Sequence
+public
+struct Factors : Printable, SequenceType
 {
-    var _factors:[Int:Int] = [:]
+    private var factors:[Int:Int] = [:]
     
-    init(_ input:Int, convertToPrime:Bool = false)
+    public init(_ input:Int, convertToPrime:Bool = false)
     {
         if (convertToPrime) {
             for p in Factors.primes(input) {
@@ -19,28 +20,28 @@ struct Factors : Printable, Sequence
             }
         }
         else {
-            _factors[input] = 1
+            factors[input] = 1
         }
     }
     
-    init(_ range:Range<Int>)
+    public init(_ range:Range<Int>)
     {
         for r in range {
             if (r != 1) {
-                _factors[r] = 1
+                factors[r] = 1
             }
         }
     }
     
-    var description:String
+    public var description:String
     {
         var desc = ""
         var addComma = false
-        let arr = Array(_factors.keys)
+        let arr = Array(factors.keys)
         let sortedFactors = sorted(arr,<)
             
         for factor in sortedFactors {
-            let power = _factors[factor]
+            let power = factors[factor]!
             if (addComma) {
                 desc += " * "
             }
@@ -50,25 +51,25 @@ struct Factors : Printable, Sequence
         return desc
     }
     
-    func generate() -> FactorGenerator {
-        return FactorGenerator(factorsDictionary: _factors)
+    public func generate() -> FactorGenerator {
+        return FactorGenerator(factorsDictionary: factors)
     }
     
-    subscript(index:Int) -> Int? {
+    public subscript(index:Int) -> Int? {
         get {
-            return _factors[index]
+            return factors[index]
         }
         set(newValue) {
-            _factors[index] = newValue
+            factors[index] = newValue
         }
     }
     
-    var count:Int
+    public var count:Int
     {
-        return _factors.count
+        return factors.count
     }
     
-    static func primes(input:Int) -> [Int]
+    public static func primes(input:Int) -> [Int]
     {
         var n = input
         var answer:[Int] = []
@@ -89,32 +90,38 @@ struct Factors : Printable, Sequence
         return answer
     }
     
-    mutating func add(factor:Int, count:Int = 1)
+    public mutating func add(factor:Int, count:Int = 1)
     {
-        self._factors[factor] = self._factors[factor] ? self._factors[factor]! + count : count
+        if (factors[factor] != nil) {
+            factors[factor]! += count
+        }
+        else {
+            factors[factor] = count
+        }
+        
     }
     
-    func primeFactors() -> [Int:Int]
+    public func primeFactors() -> [Int:Int]
     {
         var primeFactors:[Int:Int] = [:]
         
-        for (factor,count) in _factors {
+        for (factor,count) in factors {
             let primes = Factors.primes(factor)
             for p in primes {
-                let current = primeFactors[p] ? primeFactors[p]! : 0
+                let current = primeFactors[p] != nil ? primeFactors[p]! : 0
                 primeFactors[p] = current + count
             }
         }
         return primeFactors
     }
     
-    mutating func makePrime()
+    public mutating func makePrime()
     {
-        _factors = primeFactors()
+        factors = primeFactors()
     }
 }
 
-func reduce(inout f1:Factors, inout f2:Factors)
+public func reduce(inout f1:Factors, inout f2:Factors)
 {
     var swapped = false
     if (f1.count > f2.count) {
@@ -122,19 +129,19 @@ func reduce(inout f1:Factors, inout f2:Factors)
         swapped = true
     }
     
-    for (k,v1) in f1._factors {
-        if let v2 = f2._factors[k] {
+    for (k,v1) in f1.factors {
+        if let v2 = f2.factors[k] {
             if (v1 == v2) {
-                f1._factors.removeValueForKey(k)
-                f2._factors.removeValueForKey(k)
+                f1.factors.removeValueForKey(k)
+                f2.factors.removeValueForKey(k)
             }
             else if (v1 > v2) {
-                f1._factors[k] = v1-v2
-                f2._factors.removeValueForKey(k)
+                f1.factors[k] = v1-v2
+                f2.factors.removeValueForKey(k)
             }
             else {
-                f1._factors.removeValueForKey(k)
-                f2._factors[k] = v2-v1
+                f1.factors.removeValueForKey(k)
+                f2.factors[k] = v2-v1
             }
         }
     }
@@ -143,24 +150,24 @@ func reduce(inout f1:Factors, inout f2:Factors)
     }
 }
 
-func *(lhs:Factors, rhs:Factors) -> Factors
+public func *(lhs:Factors, rhs:Factors) -> Factors
 {
     var (fewest, most) = lhs.count < rhs.count ? (lhs, rhs) : (rhs, lhs)
-    for (factor,count) in fewest._factors {
-        if let currentCount = most._factors[factor] {
-            most._factors[factor] = currentCount + count
+    for (factor,count) in fewest.factors {
+        if let currentCount = most.factors[factor] {
+            most.factors[factor] = currentCount + count
         }
         else {
-            most._factors[factor] = count
+            most.factors[factor] = count
         }
     }
     return most
 }
 
-extension Int {
-    init(_ v:Factors) {
+public extension Int {
+    public init(_ v:Factors) {
         var answer = 1
-        for (base, power) in v._factors
+        for (base, power) in v.factors
         {
             for _ in 0..<power {
                 answer *= base
@@ -170,10 +177,10 @@ extension Int {
     }
 }
 
-extension Double {
-    init(_ v: Factors) {
+public extension Double {
+    public init(_ v: Factors) {
         var answer:Double = 1
-        for (base, power) in v._factors
+        for (base, power) in v.factors
         {
             answer *= pow(Double(base), Double(power))
         }
@@ -181,17 +188,17 @@ extension Double {
     }
 }
 
-struct FactorGenerator : Generator
+public struct FactorGenerator : GeneratorType
 {
     init (factorsDictionary:[Int:Int])
     {
         generator = factorsDictionary.generate()
     }
     
-    mutating func next() -> (Int,Int)?
+    mutating public func next() -> (Int,Int)?
     {
         return generator.next()
     }
     
-    var generator:Dictionary<Int,Int>.GeneratorType
+    var generator:Dictionary<Int,Int>.Generator
 }
